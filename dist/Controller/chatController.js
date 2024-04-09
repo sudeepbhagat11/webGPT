@@ -20,6 +20,7 @@ export const generateChatCompletion = async (req, res, next) => {
         user.chats.push({ content: message, role: "user" });
         const chatResponse = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
+            //@ts-ignore
             messages: chats,
         });
         user.chats.push(chatResponse.choices[0].message);
@@ -70,6 +71,7 @@ export const deleteChats = async (req, res, next) => {
     }
     catch (error) {
         console.log(error);
+        //@ts-ignore
         return res.status(200).json({ message: "ERROR", cause: error.message });
     }
 };

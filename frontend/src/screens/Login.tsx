@@ -17,6 +17,8 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
+  //@ts-ignore
+
   const userInfo = useSelector((state) => state.auth.userInfo);
 
   const redirect = "/chat";
@@ -40,6 +42,7 @@ const Login = () => {
       navigate(redirect);
       console.log("Navigated to:", redirect);
     } catch (err) {
+      //@ts-ignore
       toast.error(err?.data?.message || err.error);
     }
   };

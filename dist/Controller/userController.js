@@ -119,6 +119,7 @@ export const verifyUser = async (req, res, next) => {
     }
     catch (error) {
         console.log(error);
+        //@ts-ignore
         return res.status(200).json({ message: "ERROR", cause: error.message });
     }
 };

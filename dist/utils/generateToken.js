@@ -16,6 +16,7 @@ export const verifyToken = (req, res, next) => {
         return res.status(401).json({ message: "Token Not Received" });
     }
     return new Promise((resolve, reject) => {
+        //@ts-ignore
         return jwt.verify(token, secretKey, (err, success) => {
             if (err) {
                 reject(err.message);

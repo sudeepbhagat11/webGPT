@@ -23,6 +23,7 @@ export const verifyToken = (
     return res.status(401).json({ message: "Token Not Received" });
   }
   return new Promise<void>((resolve, reject) => {
+    //@ts-ignore
     return jwt.verify(token, secretKey, (err, success) => {
       if (err) {
         reject(err.message);

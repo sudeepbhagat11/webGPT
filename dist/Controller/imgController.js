@@ -21,6 +21,7 @@ export const imgController = async (req, res, next) => {
         const imageUrls = aiResponse.data.map((image) => image.url);
         // Assuming you only need the first image URL
         const imageUrl = imageUrls[0];
+        //@ts-ignore
         const storedImg = await cloudinary.uploader.upload(imageUrl);
         const cloudinaryUrl = cloudinary.url(storedImg.public_id, {
             secure: true,
