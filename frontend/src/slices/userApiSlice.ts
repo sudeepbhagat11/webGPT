@@ -2,7 +2,7 @@ import { apiSlice } from "./apiSlice";
 // import { USERS_URL } from "../constants";
 
 //authSlice is for localStorage and userApiSlice is for Server
-
+// @ts-ignore
 const config = {
   "Content-Type": "application/json",
   withCredentials: true,

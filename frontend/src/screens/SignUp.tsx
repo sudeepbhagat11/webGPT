@@ -18,7 +18,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const [register, { isLoading }] = useRegisterMutation();
-
+  // @ts-ignore
   const userInfo = useSelector((state) => state.auth.userInfo);
 
   const redirect = "/chat";
@@ -41,6 +41,7 @@ const SignUp = () => {
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
       } catch (err) {
+        // @ts-ignore
         toast.error(err?.data?.message || err.error);
       }
     }

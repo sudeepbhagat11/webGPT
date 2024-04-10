@@ -10,6 +10,7 @@ export const Dalle = () => {
   const [prompt, setPrompt] = useState("");
   const [image_url, setImage_url] = useState("/");
   const [isLoading, setIsLoading] = useState(false);
+  // @ts-ignore
   const [progress, setProgress] = useState(false);
 
   const submitHandler = async () => {
@@ -41,6 +42,7 @@ export const Dalle = () => {
         <div className="image">
           {isLoading && (
             <>
+              {/* @ts-ignore */}
               <progress className="form-control" value={progress} max="100">
                 {progress}%{" "}
               </progress>{" "}

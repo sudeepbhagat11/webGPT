@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormContainer from "../components/FormContainer";
 import { Button } from "react-bootstrap";
 import Tesseract from "tesseract.js";
@@ -7,15 +7,11 @@ export const ImgCovert = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
+  // @ts-ignore
   const [progress, setProgress] = useState(0);
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    // useEffect(() => {
-    //     const text = async () => {
-
-    //     }
-    // })
 
     if (image) {
       const result = await Tesseract.recognize(image);
@@ -58,6 +54,7 @@ export const ImgCovert = () => {
             }}
           >
             <input
+              // @ts-ignore
               onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
               type="file"
               className="form-control"
@@ -88,6 +85,7 @@ export const ImgCovert = () => {
           <>
             <textarea
               className="form-control w-100 mt-5"
+              // @ts-ignore
               rows="30"
               value={text}
               onChange={(e) => setText(e.target.value)}

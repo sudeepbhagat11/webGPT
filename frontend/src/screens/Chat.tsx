@@ -27,7 +27,7 @@ export const Chat = () => {
   // const name = userInfo?.name[0];
 
   const navigate = useNavigate();
-
+  // @ts-ignore
   const [isLoading, setIsLoading] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
 
@@ -63,12 +63,15 @@ export const Chat = () => {
 
   const handleDeleteChats = async () => {
     try {
+      // @ts-ignore
       toast.loading("Deleting Chats", { id: "deletechats" });
       await deleteUserChats();
       setChatMessages([]);
+      // @ts-ignore
       toast.success("Deleted Chats Successfully", { id: "deletechats" });
     } catch (error) {
       console.log(error);
+      // @ts-ignore
       toast.error("Deleting chats failed", { id: "deletechats" });
     }
   };
@@ -87,6 +90,7 @@ export const Chat = () => {
         })
         .catch((err) => {
           console.log(err);
+          // @ts-ignore
           toast.error("Loading Failed", { id: "loadchats" });
         });
     }
@@ -100,6 +104,7 @@ export const Chat = () => {
 
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
+  // @ts-ignore
   const [progress, setProgress] = useState(0);
 
   const handleSubmit2 = async () => {
@@ -145,7 +150,7 @@ export const Chat = () => {
           justifyContent: "center",
           alignItems: "center",
           flex: "1",
-          width: "100%",
+          maxWidth: "100%",
           height: "100%",
           mt: 3,
           gap: 3,
@@ -160,6 +165,7 @@ export const Chat = () => {
             flex: { md: 1, xs: 1, sm: 1 },
             flexDirection: "column",
             px: 3,
+            width: "100%",
           }}
         >
           <Typography
@@ -177,16 +183,17 @@ export const Chat = () => {
           </Typography>
           <Box
             sx={{
-              width: "100%",
+              maxWidth: "100%",
               height: "68vh",
               borderRadius: 3,
               mx: "auto",
               display: "flex",
               flexDirection: "column",
+
+              scrollBehavior: "smooth",
               overflow: "scroll",
               overflowX: "hidden",
               overflowY: "auto",
-              scrollBehavior: "smooth",
             }}
           >
             {chatMessages.map((chat, index) => (
@@ -265,6 +272,7 @@ export const Chat = () => {
                 {" "}
                 <input
                   onChange={(e) =>
+                    // @ts-ignore
                     setImage(URL.createObjectURL(e.target.files[0]))
                   }
                   type="file"

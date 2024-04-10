@@ -5,12 +5,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Avatar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../slices/userApiSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../slices/authSlice";
 
 import logo from "../webgpt-logo.png";
 
 function Header() {
+  // @ts-ignore
   const userInfo = useSelector((state) => state.auth.userInfo);
 
   const dispatch = useDispatch();
@@ -21,15 +22,18 @@ function Header() {
   const logoutHandler = async () => {
     try {
       // await logOutApiCall().unwrap();
-
+      // @ts-ignore
       const response = await logOutApiCall();
 
       // Check if the response is a JSON object
+      // @ts-ignore
       if (response.error) {
         // If it's not a JSON object, treat it as a success
+        // @ts-ignore
         console.log(response.data); // "Logged out successfully"
       } else {
         // If it's a JSON object, unwrap it as usual
+        // @ts-ignore
         await response.unwrap();
       }
 

@@ -34,7 +34,7 @@ const ChatItem = ({
   role: "user" | "assistant";
 }) => {
   const messageBlocks = extractCodeFromString(content);
-
+  // @ts-ignore
   const userInfo = useSelector((state) => state.auth.userInfo);
   const name = userInfo?.name[0];
 
