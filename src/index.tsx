@@ -1,43 +1,35 @@
 import express from "express";
 import mongoose from "mongoose";
-import app from './app.js';
+import app from "./app.js";
 import userRouter from "./routes/userRouter.js";
 import chatRouter from "./routes/chatRouter.js";
 import imgRouter from "./routes/imgRouter.js";
+import path from "path";
 
-import connectdb from "./config/mongodb.js"
-
-
-// const mongoUri = process.env.MONGODB_URI || 'default-mongodb-uri';
-
-// try {
-//   mongoose.connect(mongoUri);
-  
-//   console.log("MongoDB connected successfully")
-// } catch (error) {
-//   console.log(error);
-  
-// }
+import connectdb from "./config/mongodb.js";
 
 connectdb();
 
+const __dirname = path.resolve();
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("/api", (req,res) => {
-  res.send("Hello");
-});
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+  );
+} else {
+  app.get("/api", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
-app.use("/api",userRouter);
+app.use("/api", userRouter);
 app.use("/api", chatRouter);
 app.use("/openai", imgRouter);
-
-
-
-
-
 
 const port = process.env.PORT;
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
