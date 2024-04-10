@@ -33,9 +33,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    
+    "start": "node dist/index.js",
+    "server": "nodemon dist/index.js",
+    "client": "npm start ==prefix frontend",
+    "dev" : "concurrently \"npm run server\" \"cd frontend && npm run client\"",
+    "builf":"npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "eslintConfig": {
     "extends": [
