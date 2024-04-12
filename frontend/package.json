@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.10",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
+    "file-saver": "^2.0.5",
     "my-app": "file:..",
     "react": "^18.2.0",
     "react-avatar": "^5.0.3",
