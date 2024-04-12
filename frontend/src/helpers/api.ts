@@ -40,7 +40,7 @@ export const sendChatRequest = async (message: string) => {
     throw new Error("Message content cannot be null or undefined");
   }
 
-  const res = await axios.post("/api/new", { message });
+  const res = await axios.post("/new", { message });
   console.log(res);
 
   if (res.status !== 200) {
@@ -52,7 +52,7 @@ export const sendChatRequest = async (message: string) => {
 };
 
 export const getUserChats = async () => {
-  const res = await axios.get("/api/all-chats");
+  const res = await axios.get("/all-chats");
   if (res.status !== 200) {
     throw new Error("Unable to send chat");
   }
@@ -62,7 +62,7 @@ export const getUserChats = async () => {
 
 export const deleteUserChats = async () => {
   try {
-    const res = await axios.delete("/api/delete");
+    const res = await axios.delete("/delete");
     if (res.status === 200) {
       return res.data;
     } else {

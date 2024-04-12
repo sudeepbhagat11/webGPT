@@ -50,7 +50,7 @@ export const Chat = () => {
 
     try {
       setIsLoading(true);
-      const chatData = await axios.post("api/new", { message: content });
+      const chatData = await axios.post("new", { message: content });
       setIsLoading(false);
       console.log(chatData.data);
       setChatMessages([...chatData.data.chats]);
@@ -121,7 +121,7 @@ export const Chat = () => {
           const newMessage: Message = { role: "user", content: extractedText };
           setChatMessages((prev) => [...prev, newMessage]);
           try {
-            const chatData = await axios.post("api/new", {
+            const chatData = await axios.post("new", {
               message: extractedText,
             });
             setChatMessages([...chatData.data.chats]);

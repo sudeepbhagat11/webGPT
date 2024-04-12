@@ -21,13 +21,13 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "/frontend/dist/index.html"))
   );
 } else {
-  app.get("/api", (req, res) => {
+  app.get("/", (req, res) => {
     res.send("API is running....");
   });
 }
 
-app.use("/api", userRouter);
-app.use("/api", chatRouter);
+app.use("/", userRouter);
+app.use("/", chatRouter);
 app.use("/openai", imgRouter);
 
 const port = process.env.PORT;
