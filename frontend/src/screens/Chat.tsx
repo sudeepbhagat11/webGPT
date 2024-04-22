@@ -233,7 +233,7 @@ export const Chat = () => {
                 onClick={handleSubmit}
                 style={{
                   marginTop: "30px",
-                  marginRight: "20px",
+                  marginRight: "40px",
                   cursor: "pointer",
                 }}
               />
