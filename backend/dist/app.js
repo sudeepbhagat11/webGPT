@@ -5,7 +5,7 @@ import cors from "cors";
 config();
 const app = express();
 app.use(
-  cors({ origin: "https://web-gpt-flax.vercel.app/login", credentials: true })
+  cors({ origin: "https://web-gpt-flax.vercel.app", credentials: true })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
