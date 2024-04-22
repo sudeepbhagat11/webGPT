@@ -62,13 +62,25 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto me-3">
             {userInfo ? (
-              <Nav.Link href="/dalle">DALLE</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/dalle");
+                }}
+              >
+                DALLE
+              </Nav.Link>
             ) : (
               <Nav.Link></Nav.Link>
             )}
 
             {userInfo ? (
-              <Nav.Link href="/chat">GPT-3.5</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/chat");
+                }}
+              >
+                GPT-3.5
+              </Nav.Link>
             ) : (
               <Nav.Link></Nav.Link>
             )}

@@ -231,7 +231,11 @@ export const Chat = () => {
             {
               <LuSend
                 onClick={handleSubmit}
-                style={{ marginTop: "30px", cursor: "pointer" }}
+                style={{
+                  marginTop: "30px",
+                  marginRight: "20px",
+                  cursor: "pointer",
+                }}
               />
             }
           </div>
