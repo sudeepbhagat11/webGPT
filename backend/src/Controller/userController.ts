@@ -49,9 +49,11 @@ export const signUp = async (
 
       res.clearCookie("jwt", {
         httpOnly: true,
-        domain: "localhost",
+        // domain: "localhost",
+        domain: "webgpt-69o3.onrender.com",
         signed: true,
         path: "/",
+        secure: true,
       });
 
       const token = generateToken(user._id.toString(), user.email, "7d");
@@ -59,10 +61,12 @@ export const signUp = async (
       expires.setDate(expires.getDate() + 7);
       res.cookie("jwt", token, {
         path: "/",
-        domain: "localhost",
+        // domain: "localhost",
+        domain: "webgpt-69o3.onrender.com",
         expires,
         httpOnly: true,
         signed: true,
+        secure: true,
       });
 
       // generateToken(res,userIdString);
@@ -93,9 +97,11 @@ export const authUser = async (req: Request, res: Response) => {
 
     res.clearCookie("jwt", {
       httpOnly: true,
-      domain: "localhost",
+      // domain: "localhost",
+      domain: "webgpt-69o3.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
     });
 
     const token = generateToken(user._id.toString(), user.email, "7d");
@@ -103,10 +109,12 @@ export const authUser = async (req: Request, res: Response) => {
     expires.setDate(expires.getDate() + 7);
     res.cookie("jwt", token, {
       path: "/",
-      domain: "localhost",
+      // domain: "localhost"
+      domain: "webgpt-69o3.onrender.com",
       expires,
       httpOnly: true,
       signed: true,
+      secure: true,
     });
 
     // generateToken(res, userIdString)
