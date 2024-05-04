@@ -32,8 +32,9 @@ export const signUp = async (req, res, next) => {
             // Here creating the cookie before sending the res
             // const userIdString = user._id.toString();
             res.clearCookie("jwt", {
-                httpOnly: true,
-                domain: "localhost",
+                httpOnly: false,
+                // domain: "localhost",
+                domain: "webgpt-69o3.onrender.com",
                 signed: true,
                 path: "/",
             });
@@ -42,9 +43,10 @@ export const signUp = async (req, res, next) => {
             expires.setDate(expires.getDate() + 7);
             res.cookie("jwt", token, {
                 path: "/",
-                domain: "localhost",
+                // domain: "localhost",
+                domain: "webgpt-69o3.onrender.com",
                 expires,
-                httpOnly: true,
+                httpOnly: false,
                 signed: true,
             });
             // generateToken(res,userIdString);
@@ -70,8 +72,9 @@ export const authUser = async (req, res) => {
     if (user && (await compare(password, user.password))) {
         const userIdString = user._id.toString();
         res.clearCookie("jwt", {
-            httpOnly: true,
-            domain: "localhost",
+            httpOnly: false,
+            // domain: "localhost",
+            domain: "webgpt-69o3.onrender.com",
             signed: true,
             path: "/",
         });
@@ -80,9 +83,10 @@ export const authUser = async (req, res) => {
         expires.setDate(expires.getDate() + 7);
         res.cookie("jwt", token, {
             path: "/",
-            domain: "localhost",
+            // domain: "localhost",
+            domain: "webgpt-69o3.onrender.com",
             expires,
-            httpOnly: true,
+            httpOnly: false,
             signed: true,
         });
         // generateToken(res, userIdString)
@@ -98,7 +102,7 @@ export const authUser = async (req, res) => {
 };
 export const logoutUser = async (req, res) => {
     res.cookie("jwt", "", {
-        httpOnly: true,
+        httpOnly: false,
         expires: new Date(0),
     });
     res.send("Logged out successfully");
