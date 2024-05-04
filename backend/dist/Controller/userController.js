@@ -36,8 +36,8 @@ export const signUp = async (req, res, next) => {
                 // domain: "localhost",
                 domain: "webgpt-69o3.onrender.com",
                 signed: true,
-                secure: true,
                 path: "/",
+                secure: true
                 
             });
             const token = generateToken(user._id.toString(), user.email, "7d");
@@ -80,7 +80,7 @@ export const authUser = async (req, res) => {
             domain: "webgpt-69o3.onrender.com",
             signed: true,
             secure: true,
-            path: "/",
+            path: "/"
         });
         const token = generateToken(user._id.toString(), user.email, "7d");
         const expires = new Date();
@@ -92,7 +92,7 @@ export const authUser = async (req, res) => {
             expires,
             httpOnly: false,
             secure: true,
-            signed: true,
+            signed: true
         });
         // generateToken(res, userIdString)
         res.json({
