@@ -48,7 +48,7 @@ export const signUp = async (
       // const userIdString = user._id.toString();
 
       res.clearCookie("jwt", {
-        httpOnly: true,
+        httpOnly: false,
         // domain: "localhost",
         domain: "webgpt-69o3.onrender.com",
         signed: true,
@@ -64,7 +64,7 @@ export const signUp = async (
         // domain: "localhost",
         domain: "webgpt-69o3.onrender.com",
         expires,
-        httpOnly: true,
+        httpOnly: false,
         signed: true,
         secure: true,
       });
@@ -96,7 +96,7 @@ export const authUser = async (req: Request, res: Response) => {
     const userIdString = user._id.toString();
 
     res.clearCookie("jwt", {
-      httpOnly: true,
+      httpOnly: false,
       // domain: "localhost",
       domain: "webgpt-69o3.onrender.com",
       signed: true,
@@ -112,7 +112,7 @@ export const authUser = async (req: Request, res: Response) => {
       // domain: "localhost"
       domain: "webgpt-69o3.onrender.com",
       expires,
-      httpOnly: true,
+      httpOnly: false,
       signed: true,
       secure: true,
     });
@@ -130,7 +130,7 @@ export const authUser = async (req: Request, res: Response) => {
 
 export const logoutUser = async (req: Request, res: Response) => {
   res.cookie("jwt", "", {
-    httpOnly: true,
+    httpOnly: false,
     expires: new Date(0),
   });
   res.send("Logged out successfully");
