@@ -53,7 +53,8 @@ export const signUp = async (
         domain: "webgpt-69o3.onrender.com",
         signed: true,
         path: "/",
-        secure: true
+        secure: true,
+        sameSite:'none'
       });
 
       const token = generateToken(user._id.toString(), user.email, "7d");
@@ -66,7 +67,8 @@ export const signUp = async (
         expires,
         httpOnly: false,
         signed: true,
-        secure: true
+        secure: true,
+        sameSite:'none'
       });
 
       // generateToken(res,userIdString);
@@ -101,7 +103,8 @@ export const authUser = async (req: Request, res: Response) => {
       domain: "webgpt-69o3.onrender.com",
       signed: true,
       path: "/",
-      secure: true
+      secure: true,
+      sameSite:'none'
     });
 
     const token = generateToken(user._id.toString(), user.email, "7d");
@@ -114,7 +117,8 @@ export const authUser = async (req: Request, res: Response) => {
       expires,
       httpOnly: false,
       signed: true,
-      secure: true
+      secure: true,
+      sameSite:'none'
     });
 
     // generateToken(res, userIdString)
@@ -132,6 +136,7 @@ export const logoutUser = async (req: Request, res: Response) => {
   res.cookie("jwt", "", {
     httpOnly: false,
     expires: new Date(0),
+    sameSite:'none'
   });
   res.send("Logged out successfully");
 };
